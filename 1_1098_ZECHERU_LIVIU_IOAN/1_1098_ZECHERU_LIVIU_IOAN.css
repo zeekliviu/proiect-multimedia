@@ -1,0 +1,81 @@
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("media/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+canvas {
+  border: solid black;
+  background-color: white;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #6a0dad;
+  border-radius: 10rem;
+  color: #aef359;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+button.control-button:hover {
+  background-color: #aef359;
+  color: #6a0dad;
+}
+
+#selectBtn {
+  background-image: url("media/arrow.png");
+  background-size: 10px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#ellipseBtn {
+  background-image: url("media/ellipse.png");
+  background-size: 10px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#rectBtn {
+  background-image: url("media/rectangle.png");
+  background-size: 20px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#lineBtn {
+  background-image: url("media/line.png");
+  background-size: 100% 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #6a0dad;
+  color: #aef359;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+button:hover .tooltip-text {
+  visibility: visible;
+  margin-top: 1rem;
+  margin-left: -3.8rem;
+}
