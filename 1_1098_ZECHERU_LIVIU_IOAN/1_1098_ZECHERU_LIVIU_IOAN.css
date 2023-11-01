@@ -22,7 +22,9 @@ button {
   color: #aef359;
   border: none;
   cursor: pointer;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 1rem;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,6 +34,15 @@ button {
 button.control-button:hover {
   background-color: #aef359;
   color: #6a0dad;
+}
+
+#mainCanvasDiv {
+  position: relative;
+}
+
+#previewCanvasDiv {
+  position: absolute;
+  top: 0;
 }
 
 #selectBtn {
@@ -62,6 +73,64 @@ button.control-button:hover {
   background-repeat: no-repeat;
 }
 
+#cpFillColor {
+  margin-left: -1rem;
+}
+
+#upBtns {
+  margin-top: 1rem;
+}
+
+#grosimeLabel {
+  align-self: center;
+}
+
+#grosimeSlider {
+  margin-left: 1.5rem;
+}
+
+#grosimeLabel {
+  margin-left: 3rem;
+}
+
+#listaFiguriLbl {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  background-color: #6a0dad;
+  background-size: auto;
+  color: #aef359;
+}
+
+#listaFiguri {
+  width: 100%;
+}
+
+#sideNote {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #aef359;
+  background: #6a0dad;
+  margin-left: 2rem;
+  word-wrap: break-word;
+  text-align: justify;
+}
+
+#rightBtnsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#figuri-container {
+  width: min-content;
+  height: 400px;
+  text-align: justify;
+}
+
 .tooltip-text {
   visibility: hidden;
   width: fit-content;
@@ -72,6 +141,36 @@ button.control-button:hover {
   padding: 5px;
   position: absolute;
   z-index: 1;
+}
+
+.canvas-container {
+  display: flex;
+}
+
+.colorPicker {
+  margin-right: 10px;
+}
+
+.labelCanvas {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #aef359;
+  background: #6a0dad;
+  margin-right: 1.5rem;
+}
+
+.button-container {
+  margin-left: -9%;
+}
+
+#placeholderLbl {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #aef359;
+  background: #6a0dad;
+  margin-left: 2rem;
 }
 
 button:hover .tooltip-text {

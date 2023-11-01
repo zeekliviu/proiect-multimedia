@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ro">
   <head>
     <meta charset="UTF-8" />
@@ -11,9 +12,9 @@
     <title>ZethPaint&trade;</title>
   </head>
   <body>
-    <div>
+    <div class="button-container" id="upBtns">
       <button id="selectBtn">
-        <span class="tooltip-text"> Selectează element </span>
+        <span class="tooltip-text">Cursor</span>
       </button>
       <button id="ellipseBtn">
         <span class="tooltip-text">Desenează elipsă</span>
@@ -25,19 +26,67 @@
         <span class="tooltip-text">Desenează o linie</span>
       </button>
     </div>
-    <canvas id="mainCanvas" width="500" height="400">
-      <!-- <div class="wrapper">
-            <div class="content">
-                <ul class="menu">
-                    <li class="item">
-                        <span></span>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-    </canvas>
-    <div class="size-button-container">
+    <div class="canvas-container">
+      <div class="color-picker-container">
+        <span class="labelCanvas">Fundal Canvas</span
+        ><input
+          type="color"
+          class="colorPicker"
+          value="#ffffff"
+          id="cpBgCanvas"
+        />
+        <br /><span class="labelCanvas">Culoare Linie</span
+        ><input
+          type="color"
+          class="colorPicker"
+          value="#000000"
+          id="cpLineColor"
+        />
+        <br /><span class="labelCanvas">Culoare Umplere</span
+        ><input
+          type="color"
+          class="colorPicker"
+          value="#ffffff"
+          id="cpFillColor"
+        />
+        <br /><span class="labelCanvas" id="grosimeLabel">
+          Grosime:<span id="grosimeValue">10</span> </span
+        ><br />
+        <input type="range" id="grosimeSlider" value="10" min="1" max="50" />
+        <br />
+        <input type="checkbox" id="transparencyCb" />
+        <label class="labelCanvas" for="transparencyCb"
+          >Transparență figuri</label
+        >
+      </div>
+      <canvas id="mainCanvas" width="500" height="400"></canvas>
+      <div id="rightBtnsContainer">
+        <div>
+          <button id="saveBtn" class="control-button">
+            Salvează ca PNG/JPEG</button
+          ><br /><button class="control-button" id="exportSVG">
+            Exportă ca SVG
+          </button>
+          <br /><br />
+        </div>
+        <div id="figuri-container">
+          <span id="listaFiguriLbl">Listă de figuri</span> <br /><br /><span
+            id="placeholderLbl"
+            >Momentan nu există figuri.</span
+          ><br />
+          <select id="listaFiguri" size="7" hidden></select>
+          <br /><br />
+          <span id="sideNote">
+            * Notă: Pentru a șterge o figură selectați-o din lista de mai sus și
+            apăsați tasta Delete. Pentru a modifica proprietățile unei figuri
+            selectați-o din lista de mai sus și apăsați tasta E
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
       <button id="magnifyBtn" class="control-button">Mărește Canvas</button>
+      <button id="clearBtn" class="control-button">Șterge Canvas</button>
       <button id="minifyBtn" class="control-button">Micșorează Canvas</button>
     </div>
   </body>
