@@ -382,12 +382,13 @@ listaFiguri.onkeydown = (e) => {
   } else if (e.keyCode === 69) {
     const figura = figuri[indexFig];
     const figuraNume = figura.constructor.name;
+    let tmp;
     switch (figuraNume) {
       case "Elipsa":
         const x = prompt(
           `Introduceti noua valoare pentru x (valoare veche: ${figura.x}):`
         );
-        let tmp = parseInt(x);
+        tmp = parseInt(x);
         if (isNaN(tmp)) {
           alert("Valoare invalidă!");
           return;
@@ -524,7 +525,9 @@ listaFiguri.onkeydown = (e) => {
         }
         break;
       case "Linie":
-        const x1 = prompt("Introduceti noua valoare pentru x1:");
+        const x1 = prompt(
+          `Introduceti noua valoare pentru x1 (valoare veche: ${figura.x1}):`
+        );
         tmp = parseInt(x1);
         if (isNaN(tmp)) {
           alert("Valoare invalidă!");
@@ -540,7 +543,9 @@ listaFiguri.onkeydown = (e) => {
           figura.x1 = tmp;
           modificat = true;
         }
-        const y1 = prompt("Introduceti noua valoare pentru y1:");
+        const y1 = prompt(
+          `Introduceti noua valoare pentru y1 (valoare veche: ${figura.y1}):`
+        );
         tmp = parseInt(y1);
         if (isNaN(tmp)) {
           alert("Valoare invalidă!");
@@ -556,7 +561,9 @@ listaFiguri.onkeydown = (e) => {
           figura.y1 = tmp;
           modificat = true;
         }
-        const x2 = prompt("Introduceti noua valoare pentru x2:");
+        const x2 = prompt(
+          `Introduceti noua valoare pentru x2 (valoare veche: ${figura.x2}):`
+        );
         tmp = parseInt(x2);
         if (isNaN(tmp)) {
           alert("Valoare invalidă!");
@@ -566,7 +573,9 @@ listaFiguri.onkeydown = (e) => {
           figura.x2 = tmp;
           modificat = true;
         }
-        const y2 = prompt("Introduceti noua valoare pentru y2:");
+        const y2 = prompt(
+          `Introduceti noua valoare pentru y2 (valoare veche: ${figura.y2}):`
+        );
         tmp = parseInt(y2);
         if (isNaN(tmp)) {
           alert("Valoare invalidă!");
