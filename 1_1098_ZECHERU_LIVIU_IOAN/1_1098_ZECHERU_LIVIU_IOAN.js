@@ -697,25 +697,71 @@ exportSVGBtn.onclick = () => {
     alert("Numele imaginii nu poate fi vid!");
     return;
   }
-  const downloadObj = document.createElement("a");
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width", canvas.width);
   svg.setAttribute("height", canvas.height);
-  const imagine = new Image();
-  imagine.src = canvas.toDataURL("image/png");
-  const svgImg = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "image"
+  svg.setAttribute("style", `border: 1px solid black;`);
+  svg.setAttributeNS(
+    "http://www.w3.org/2000/xmlns/",
+    "xmlns:xlink",
+    "http://www.w3.org/1999/xlink"
   );
-  svgImg.setAttribute("width", canvas.width);
-  svgImg.setAttribute("height", canvas.height);
-  svgImg.setAttribute("x", 0);
-  svgImg.setAttribute("y", 0);
-  svgImg.setAttributeNS("http://www.w3.org/1999/xlink", "href", imagine.src);
-  svg.appendChild(svgImg);
-  const svgData = new XMLSerializer().serializeToString(svg);
-  const blob = new Blob([svgData], { type: "image/svg+xml" });
-  downloadObj.href = URL.createObjectURL(blob);
+  const bg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  bg.setAttribute("x", 0);
+  bg.setAttribute("y", 0);
+  bg.setAttribute("width", canvas.width);
+  bg.setAttribute("height", canvas.height);
+  bg.setAttribute("fill", cpBgCanvas.value);
+  svg.appendChild(bg);
+  for (const figura of figuri) {
+    switch (figura.constructor.name) {
+      case "Elipsa":
+        const elipsa = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "ellipse"
+        );
+        elipsa.setAttribute("cx", figura.x);
+        elipsa.setAttribute("cy", figura.y);
+        elipsa.setAttribute("rx", figura.razaX);
+        elipsa.setAttribute("ry", figura.razaY);
+        elipsa.setAttribute("stroke", figura.culoareContur);
+        elipsa.setAttribute("stroke-width", figura.grosimeContur);
+        elipsa.setAttribute("fill", figura.culoareInterior);
+        svg.appendChild(elipsa);
+        break;
+      case "Dreptunghi":
+        const dreptunghi = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "rect"
+        );
+        dreptunghi.setAttribute("x", figura.x);
+        dreptunghi.setAttribute("y", figura.y);
+        dreptunghi.setAttribute("width", figura.latime);
+        dreptunghi.setAttribute("height", figura.inaltime);
+        dreptunghi.setAttribute("stroke", figura.culoareContur);
+        dreptunghi.setAttribute("stroke-width", figura.grosimeContur);
+        dreptunghi.setAttribute("fill", figura.culoareInterior);
+        svg.appendChild(dreptunghi);
+        break;
+      case "Linie":
+        const linie = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "line"
+        );
+        linie.setAttribute("x1", figura.x1);
+        linie.setAttribute("y1", figura.y1);
+        linie.setAttribute("x2", figura.x2);
+        linie.setAttribute("y2", figura.y2);
+        linie.setAttribute("stroke", figura.culoareContur);
+        linie.setAttribute("stroke-width", figura.grosimeContur);
+        svg.appendChild(linie);
+        break;
+    }
+  }
+  const serializer = new XMLSerializer();
+  const data = serializer.serializeToString(svg);
+  const downloadObj = document.createElement("a");
+  downloadObj.href = "data:image/svg+xml;base64," + btoa(data);
   downloadObj.download = numeFisier + ".svg";
   downloadObj.click();
 };
